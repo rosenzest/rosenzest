@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.rosenzest</groupId>
+	<artifactId>rosenzest-dependencies</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<name>rosenzest-dependencies</name>
+	<description>Rosenzest Dependencies</description>
+
+	<url>https://www.rosenzest.com</url>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>Rosenzest</name>
+			<email>rosenzest@gmail.com</email>
+			<organization>Rosenzest (Shenzhen) Technology Co., Ltd.</organization>
+			<organizationUrl>https://www.rosenzest.com</organizationUrl>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git://github.com/rosenzest/rosenzest.git</connection>
+		<developerConnection>
+			scm:git:ssh://git@github.com/rosenzest/rosenzest.git</developerConnection>
+		<url>https://github.com/rosenzest/rosenzest</url>
+	</scm>
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/rosenzest/rosenzest/issues</url>
+	</issueManagement>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<rosenzest-api.version>1.0.0-SNAPSHOT</rosenzest-api.version>
+		<rosenzest-base.version>1.0.0-SNAPSHOT</rosenzest-base.version>
+		<rosenzest-server-base.version>1.0.0-SNAPSHOT</rosenzest-server-base.version>
+		<rosenzest-model-base.version>1.0.0-SNAPSHOT</rosenzest-model-base.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<spring-boot.version>2.7.6</spring-boot.version>
+		<spring-cloud-alibaba.version>2021.0.5.0</spring-cloud-alibaba.version>
+		<spring-cloud.version>2021.0.5</spring-cloud.version>
+		<reflections.version>0.9.11</reflections.version>
+		<fastjson2.version>2.0.53</fastjson2.version>
+		<jjwt-api.version>0.12.6</jjwt-api.version>
+		<jjwt-impl.version>0.12.6</jjwt-impl.version>
+		<jjwt-jackson.version>0.12.6</jjwt-jackson.version>
+		<hutool-all.version>5.8.34</hutool-all.version>
+		<pagehelper-spring-boot-starter.version>2.1.0</pagehelper-spring-boot-starter.version>
+		<pagehelper-spring-boot-autoconfigure.version>2.1.0</pagehelper-spring-boot-autoconfigure.version>
+		<sa-token-spring-boot2-starter.version>1.39.0</sa-token-spring-boot2-starter.version>
+		<mybatis-plus-ext-boot-starter.version>3.5.5-EXT561-boot2</mybatis-plus-ext-boot-starter.version>
+		<mysql-connector-java.version>8.0.33</mysql-connector-java.version>
+		<springfox-swagger2.version>3.0.0</springfox-swagger2.version>
+		<springfox-core.version>3.0.0</springfox-core.version>
+		<swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
+		<easypoi-spring-boot-starter.version>4.5.0</easypoi-spring-boot-starter.version>
+	</properties>
+
+	<dependencyManagement>
+
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>${spring-cloud-alibaba.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- rosenzest -->
+			<dependency>
+				<groupId>com.rosenzest</groupId>
+				<artifactId>rosenzest-base</artifactId>
+				<version>${rosenzest-base.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.rosenzest</groupId>
+				<artifactId>rosenzest-server-base</artifactId>
+				<version>${rosenzest-server-base.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.rosenzest</groupId>
+				<artifactId>rosenzest-api</artifactId>
+				<version>${rosenzest-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.rosenzest.model</groupId>
+				<artifactId>rosenzest-model-base</artifactId>
+				<version>${rosenzest-model-base.version}</version>
+			</dependency>
+
+
+			<!-- fastjson2 -->
+			<dependency>
+				<groupId>com.alibaba.fastjson2</groupId>
+				<artifactId>fastjson2</artifactId>
+				<version>${fastjson2.version}</version>
+			</dependency>
+
+			<!-- JWT -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-api</artifactId>
+				<version>${jjwt-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-impl</artifactId>
+				<version>${jjwt-impl.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson
+				is preferred -->
+				<version>${jjwt-jackson.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+
+			<!-- hutool -->
+			<dependency>
+				<groupId>cn.hutool</groupId>
+				<artifactId>hutool-all</artifactId>
+				<version>${hutool-all.version}</version>
+			</dependency>
+
+			<!-- 分页 -->
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper-spring-boot-starter</artifactId>
+				<version>${pagehelper-spring-boot-starter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper-spring-boot-autoconfigure</artifactId>
+				<version>${pagehelper-spring-boot-autoconfigure.version}</version>
+			</dependency>
+
+			<!-- sa token -->
+			<dependency>
+				<groupId>cn.dev33</groupId>
+				<artifactId>sa-token-spring-boot2-starter</artifactId>
+				<version>${sa-token-spring-boot2-starter.version}</version>
+			</dependency>
+
+			<!-- mybatis and mybatis plus/mybaits plus ext -->
+			<dependency>
+				<groupId>com.tangzc</groupId>
+				<artifactId>mybatis-plus-ext-boot-starter</artifactId>
+				<version>${mybatis-plus-ext-boot-starter.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql-connector-java.version}</version>
+			</dependency>
+
+			<!-- swagger -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${springfox-swagger2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-core</artifactId>
+				<version>${springfox-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.xiaoymin</groupId>
+				<artifactId>swagger-bootstrap-ui</artifactId>
+				<version>${swagger-bootstrap-ui.version}</version>
+			</dependency>
+
+			<!--POI支持 -->
+			<dependency>
+				<groupId>cn.afterturn</groupId>
+				<artifactId>easypoi-spring-boot-starter</artifactId>
+				<version>${easypoi-spring-boot-starter.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>rosenzest-releases</id>
+			<name>rosenzest Releases</name>
+			<url>${repository.url.releases}</url>
+		</repository>
+		<snapshotRepository>
+			<id>rosenzest-snapshots</id>
+			<name>rosenzest Snapshots</name>
+			<url>${repository.url.snapshots}</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>
