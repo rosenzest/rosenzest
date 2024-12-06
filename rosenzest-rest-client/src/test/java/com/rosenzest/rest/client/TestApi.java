@@ -1,7 +1,5 @@
 package com.rosenzest.rest.client;
 
-import org.springframework.http.HttpMethod;
-
 import com.alibaba.fastjson2.JSON;
 import com.rosenzest.base.exception.BusinessException;
 import com.rosenzest.rest.client.annotation.Api;
@@ -12,25 +10,25 @@ import cn.hutool.http.HttpRequest;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Api(host = "https://uat-api.wb-game.dev", path = "/partner/login", method = HttpMethod.POST)
+@Api(host = "https://uat-api.wb-game.dev", path = "/partner/login")
 public class TestApi extends AbstractHttpClientApi<TestApiParam, TestApiResult> {
 
-	@Override
-	protected TestApiResult doExecute(TestApiParam request, boolean retry) throws BusinessException {
-		
-		//getRequestUri(request).toURL();
-		
-		HttpRequest req = HttpRequest.post("https://uat-api.wb-game.dev/partner/login");
-		req.addHeaders(getRequestHeader());
-		req.body(getRequestBody(request).toString());
-		
-		String body = req.execute().body();
-		return JSON.parseObject(body, TestApiResult.class);
-	}
+    @Override
+    protected TestApiResult doExecute(TestApiParam request, boolean retry) throws BusinessException {
 
-	public static void main(String[] args) {
-		TestApiParam param = new TestApiParam("1Block_usd", "123456");
-		TestApiResult execute = param.execute();
-		log.info("execute:{}", execute.toString());
-	}
+        String url = getRequestUri(request).toString();
+
+        HttpRequest req = HttpRequest.post(url);
+        req.addHeaders(getRequestHeader());
+        req.body(getRequestBody(request).toString());
+
+        String body = req.execute().body();
+        return JSON.parseObject(body, TestApiResult.class);
+    }
+
+    public static void main(String[] args) {
+        TestApiParam param = new TestApiParam("1Block_usd", "123456");
+        TestApiResult result = param.execute();
+        log.info("execute:{}", result.toString());
+    }
 }

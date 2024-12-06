@@ -1,73 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-         
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.rosenzest</groupId>
-        <artifactId>rosenzest-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../rosenzest-parent</relativePath>
-    </parent>
-    
-    <groupId>com.rosenzest</groupId>
-    <artifactId>rosenzest-rest-client</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    
-    <name>rosenzest-rest-client</name>
-    <description>Rosenzest rest client</description>
-    
-    <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
-    
-    <dependencies>
-    
-    	<dependency>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.rosenzest</groupId>
+		<artifactId>rosenzest-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../rosenzest-parent</relativePath>
+	</parent>
+
+	<groupId>com.rosenzest</groupId>
+	<artifactId>rosenzest-rest-client</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>rosenzest-rest-client</name>
+	<description>Rosenzest rest client</description>
+
+	<url>https://www.rosenzest.com</url>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>Rosenzest</name>
+			<email>rosenzest@gmail.com</email>
+			<organization>Rosenzest (Shenzhen) Technology Co., Ltd.</organization>
+			<organizationUrl>https://www.rosenzest.com</organizationUrl>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git://github.com/rosenzest/rosenzest.git</connection>
+		<developerConnection>
+			scm:git:ssh://git@github.com/rosenzest/rosenzest.git</developerConnection>
+		<url>https://github.com/rosenzest/rosenzest</url>
+	</scm>
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/rosenzest/rosenzest/issues</url>
+	</issueManagement>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
 			<groupId>com.rosenzest</groupId>
 			<artifactId>rosenzest-base</artifactId>
 		</dependency>
-    
-    	<!-- hutool -->
+
+		<!-- hutool -->
 		<dependency>
 			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
 		</dependency>
-		
+
 		<!-- fastjson2 -->
 		<dependency>
 			<groupId>com.alibaba.fastjson2</groupId>
 			<artifactId>fastjson2</artifactId>
 		</dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        
-    </dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
-    <build>
+	</dependencies>
+
+	<build>
 		<plugins>
-            <plugin>
-                <artifactId>maven-source-plugin</artifactId>
-                <configuration>
-                    <attach>true</attach>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<configuration>
+					<attach>true</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

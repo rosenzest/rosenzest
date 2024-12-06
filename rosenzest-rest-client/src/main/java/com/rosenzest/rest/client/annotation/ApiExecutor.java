@@ -14,14 +14,14 @@ import org.springframework.core.annotation.AliasFor;
 import com.rosenzest.rest.client.IApi;
 
 /**
- * 用于标记这是一个api工厂
+ * 用于标记这是一个api调用者
  * 
  * @author fronttang
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface ApiFactory {
+public @interface ApiExecutor {
 
     /**
      * API 接口实现类

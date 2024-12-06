@@ -11,11 +11,16 @@ import com.rosenzest.base.exception.BusinessException;
  * @author fronttang
  * @date 2021/08/25
  */
-public interface IRetryApi<P extends IApiRequest, R extends IApiResponse> extends IApi<P, R> {
+public interface IRetryApi<PARAM, RESULT> extends IApi<PARAM, RESULT> {
 
     @Override
-    default R execute(P param) throws BusinessException {
+    default RESULT execute(PARAM param) throws BusinessException {
         return execute(param, true);
+    }
+
+    @Override
+    default RESULT execute() throws BusinessException {
+        return execute(null, true);
     }
 
     /**
@@ -26,5 +31,16 @@ public interface IRetryApi<P extends IApiRequest, R extends IApiResponse> extend
      * @return
      * @throws BusinessException
      */
-    R execute(P param, boolean retry) throws BusinessException;
+    RESULT execute(PARAM param, boolean retry) throws BusinessException;
+
+    /**
+     * 执行无参调用
+     * 
+     * @param retry
+     * @return
+     * @throws BusinessException
+     */
+    default RESULT execute(boolean retry) throws BusinessException {
+        return execute(null, retry);
+    }
 }

@@ -20,10 +20,9 @@ public final class EnumUtils {
     private static final ConcurrentHashMap<Class<?>, EnumHolder<?>> CACHE =
         new ConcurrentHashMap<Class<?>, EnumHolder<?>>();
 
-
     @SuppressWarnings("unchecked")
     public static <E extends IEnum<?>> EnumHolder<E> init(Class<E> clazz) {
-    	EnumHolder<E> enumUtil = (EnumHolder<E>)CACHE.get(clazz);
+        EnumHolder<E> enumUtil = (EnumHolder<E>)CACHE.get(clazz);
         if (Objects.isNull(enumUtil)) {
             enumUtil = new EnumHolder<E>(clazz);
             CACHE.put(clazz, enumUtil);

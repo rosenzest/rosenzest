@@ -13,7 +13,7 @@ import org.springframework.core.annotation.AliasFor;
 import org.springframework.http.HttpMethod;
 
 /**
- * 用于标记这是一个api
+ * 用于标记这是一个GET api
  * 
  * @author fronttang
  */

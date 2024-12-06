@@ -13,54 +13,54 @@ import com.rosenzest.base.constant.ResultCode;
  */
 public interface IResult extends Serializable {
 
-	/**
-	 * 获取返回信息
-	 * 
-	 * @return 返回信息
-	 */
-	default String msg() {
-		return getMsg();
-	}
+    /**
+     * 获取返回信息
+     * 
+     * @return 返回信息
+     */
+    default String msg() {
+        return getMsg();
+    }
 
-	/**
-	 * 获取返回码
-	 * 
-	 * @return 返回码
-	 */
-	default Integer code() {
-		return getCode();
-	}
+    /**
+     * 获取返回码
+     * 
+     * @return 返回码
+     */
+    default Integer code() {
+        return getCode();
+    }
 
-	/**
-	 * 获取返回码
-	 * 
-	 * @return 返回码
-	 */
-	Integer getCode();
+    /**
+     * 获取返回码
+     * 
+     * @return 返回码
+     */
+    Integer getCode();
 
-	/**
-	 * 获取返回信息
-	 * 
-	 * @return 返回信息
-	 */
-	String getMsg();
+    /**
+     * 获取返回信息
+     * 
+     * @return 返回信息
+     */
+    String getMsg();
 
-	/**
-	 * 构建返回对象
-	 * 
-	 * @return
-	 */
-	default <T> Result<T> toResult() {
-		return Results.error(this);
-	}
+    /**
+     * 构建返回对象
+     * 
+     * @return
+     */
+    default <T> Result<T> toResult() {
+        return Results.error(this);
+    }
 
-	/**
-	 * 是否成功
-	 * 
-	 * @return
-	 */
-	@JsonIgnore
-	default boolean isSuccess() {
-		return ResultCode.SUCCESS_CODE == code();
-	}
+    /**
+     * 是否成功
+     * 
+     * @return
+     */
+    @JsonIgnore
+    default boolean isSuccess() {
+        return ResultCode.SUCCESS_CODE.equals(code());
+    }
 }

@@ -16,8 +16,7 @@ import cn.hutool.core.map.MapUtil;
  * @author fronttang
  * @date 2021/08/27
  */
-public abstract class AbstractHttpClientApi<P extends IApiRequest, R extends IApiResponse>
-    extends AbstractEditableUriApi<P, R> {
+public abstract class AbstractHttpClientApi<PARAM, RESULT> extends AbstractEditableUriApi<PARAM, RESULT> {
 
     /**
      * 构建请求参数
@@ -25,7 +24,7 @@ public abstract class AbstractHttpClientApi<P extends IApiRequest, R extends IAp
      * @param param
      * @return
      */
-    protected Object getRequestBody(P param) {
+    protected Object getRequestBody(PARAM param) {
         if (Objects.nonNull(param)) {
             return JSON.toJSONString(param);
         }

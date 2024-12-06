@@ -11,7 +11,6 @@ import java.lang.annotation.Target;
 
 import org.springframework.http.HttpMethod;
 
-
 /**
  * 用于标记这是一个api
  * 

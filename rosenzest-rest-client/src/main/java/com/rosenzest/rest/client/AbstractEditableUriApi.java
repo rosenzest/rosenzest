@@ -2,6 +2,7 @@ package com.rosenzest.rest.client;
 
 import java.net.URI;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.core.annotation.AnnotatedElementUtils;
@@ -20,7 +21,7 @@ import cn.hutool.core.net.url.UrlBuilder;
  * @author fronttang
  * @date 2021/08/26
  */
-public abstract class AbstractEditableUriApi<P extends IApiRequest, R extends IApiResponse> extends AbstractApi<P, R>
+public abstract class AbstractEditableUriApi<PARAM, RESULT> extends AbstractApi<PARAM, RESULT>
     implements InitializingBean {
 
     /**
@@ -44,7 +45,7 @@ public abstract class AbstractEditableUriApi<P extends IApiRequest, R extends IA
      * @param param
      * @return
      */
-    protected URI getRequestUri(P param) {
+    protected URI getRequestUri(PARAM param) {
 
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.newInstance();
         UrlBuilder builder = UrlBuilder.of(this.host);
@@ -71,8 +72,11 @@ public abstract class AbstractEditableUriApi<P extends IApiRequest, R extends IA
      * @param param
      * @return
      */
-    protected Map<String, Object> uriVariables(P param) {
-        return BeanUtil.beanToMap(param);
+    protected Map<String, Object> uriVariables(PARAM param) {
+        if (Objects.nonNull(param)) {
+            return BeanUtil.beanToMap(param);
+        }
+        return MapUtil.newHashMap();
     }
 
     /**
@@ -81,24 +85,23 @@ public abstract class AbstractEditableUriApi<P extends IApiRequest, R extends IA
      * @param param
      * @return
      */
-    protected Map<String, Object> queryParam(P param) {
+    protected Map<String, Object> queryParam(PARAM param) {
         return MapUtil.newHashMap();
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        Api api = AnnotatedElementUtils.findMergedAnnotation(getClass(), Api.class);
-        this.host = api.host();
-        this.path = api.path();
-        this.method = api.method();
         init();
     }
 
     /**
      * 初始化操作
      */
-    protected void init() {
-
+    public void init() {
+        Api api = AnnotatedElementUtils.findMergedAnnotation(getClass(), Api.class);
+        this.host = api.host();
+        this.path = api.path();
+        this.method = api.method();
     }
 
 }

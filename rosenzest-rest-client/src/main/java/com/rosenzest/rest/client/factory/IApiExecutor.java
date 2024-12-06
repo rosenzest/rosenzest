@@ -5,9 +5,7 @@ import org.springframework.core.annotation.AnnotatedElementUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rosenzest.base.exception.BusinessException;
 import com.rosenzest.rest.client.IApi;
-import com.rosenzest.rest.client.IApiRequest;
-import com.rosenzest.rest.client.IApiResponse;
-import com.rosenzest.rest.client.annotation.ApiFactory;
+import com.rosenzest.rest.client.annotation.ApiExecutor;
 import com.rosenzest.rest.client.util.ApiUtils;
 
 /**
@@ -16,14 +14,14 @@ import com.rosenzest.rest.client.util.ApiUtils;
  * @author fronttang
  * @date 2021/08/25
  */
-public interface IApiFactory<R extends IApiResponse> {
+public interface IApiExecutor<RESULT> {
 
     /**
      * 执行调用
      * 
      * @return
      */
-    R execute() throws BusinessException;
+    RESULT execute() throws BusinessException;
 
     /**
      * 获取API实现类
@@ -32,8 +30,10 @@ public interface IApiFactory<R extends IApiResponse> {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    default IApi<IApiRequest, R> getApi() throws BusinessException {
-        return ApiUtils.getApi(getApiClass());
+    default <PARAM> IApi<PARAM, RESULT> getApi() throws BusinessException {
+        IApi<PARAM, RESULT> api = ApiUtils.getApi(getApiClass());
+        api.init();
+        return api;
     }
 
     /**
@@ -44,7 +44,7 @@ public interface IApiFactory<R extends IApiResponse> {
     @SuppressWarnings({"rawtypes"})
     @JsonIgnore
     default Class<? extends IApi> getApiClass() {
-        ApiFactory annotation = AnnotatedElementUtils.findMergedAnnotation(getClass(), ApiFactory.class);
+        ApiExecutor annotation = AnnotatedElementUtils.findMergedAnnotation(getClass(), ApiExecutor.class);
         Class<? extends IApi> executer = annotation.exec();
         return executer;
     }

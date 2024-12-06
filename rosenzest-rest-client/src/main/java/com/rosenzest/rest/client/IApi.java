@@ -14,7 +14,14 @@ import com.rosenzest.base.exception.BusinessException;
  * @author fronttang
  * @date 2021/08/25
  */
-public interface IApi<P extends IApiRequest, R extends IApiResponse> {
+public interface IApi<PARAM, RESULT> {
+
+    /**
+     * 接口初始化
+     */
+    default void init() {
+
+    }
 
     /**
      * 执行前处理逻辑,可以对请求参数进行包装处理
@@ -23,7 +30,7 @@ public interface IApi<P extends IApiRequest, R extends IApiResponse> {
      * @return
      * @throws BusinessException
      */
-    default P beforeExecute(P request) throws BusinessException {
+    default PARAM beforeExecute(PARAM request) throws BusinessException {
         return request;
     }
 
@@ -34,7 +41,17 @@ public interface IApi<P extends IApiRequest, R extends IApiResponse> {
      * @return
      * @throws BusinessException
      */
-    R execute(P request) throws BusinessException;
+    RESULT execute(PARAM request) throws BusinessException;
+
+    /**
+     * 无参请求
+     * 
+     * @return
+     * @throws BusinessException
+     */
+    default RESULT execute() throws BusinessException {
+        return execute(null);
+    }
 
     /**
      * 执行后处理逻辑，可以对返回结果进行再处理
@@ -44,7 +61,7 @@ public interface IApi<P extends IApiRequest, R extends IApiResponse> {
      * @return
      * @throws BusinessException
      */
-    default R afterExecute(P request, R response) throws BusinessException {
+    default RESULT afterExecute(PARAM request, RESULT response) throws BusinessException {
         return response;
     }
 
@@ -54,8 +71,8 @@ public interface IApi<P extends IApiRequest, R extends IApiResponse> {
      * @return
      */
     @SuppressWarnings("unchecked")
-    default Class<R> getResponseType() {
-        Class<R> clazz = (Class<R>)getGenericType(1);
+    default Class<RESULT> getResponseType() {
+        Class<RESULT> clazz = (Class<RESULT>)getGenericType(1);
         return clazz;
     }
 
@@ -65,8 +82,8 @@ public interface IApi<P extends IApiRequest, R extends IApiResponse> {
      * @return
      */
     @SuppressWarnings("unchecked")
-    default Class<P> getRequestType() {
-        Class<P> clazz = (Class<P>)getGenericType(0);
+    default Class<PARAM> getRequestType() {
+        Class<PARAM> clazz = (Class<PARAM>)getGenericType(0);
         return clazz;
     }
 

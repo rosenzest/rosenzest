@@ -1,7 +1,5 @@
 package com.rosenzest.rest.client;
 
-import java.util.Objects;
-
 import com.rosenzest.base.exception.BusinessException;
 import com.rosenzest.rest.client.enums.ApiResultEnum;
 
@@ -14,22 +12,17 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2021/08/27
  */
 @Slf4j
-public abstract class AbstractApi<P extends IApiRequest, R extends IApiResponse> implements IRetryApi<P, R> {
+public abstract class AbstractApi<PARAM, RESULT> implements IRetryApi<PARAM, RESULT> {
 
     @Override
-    public R execute(P request, boolean retry) throws BusinessException {
+    public RESULT execute(PARAM request, boolean retry) throws BusinessException {
 
         try {
-
-            if (Objects.isNull(request)) {
-                throw new BusinessException(ApiResultEnum.API_PARAM_NOT_NULL);
-            }
-
             // 前置处理
             request = beforeExecute(request);
 
             // 执行调用
-            R result = doExecute(request, retry);
+            RESULT result = doExecute(request, retry);
 
             // 后置处理
             return afterExecute(request, result);
@@ -49,6 +42,6 @@ public abstract class AbstractApi<P extends IApiRequest, R extends IApiResponse>
      * @param retry
      * @return
      */
-    protected abstract R doExecute(P request, boolean retry) throws BusinessException;
+    protected abstract RESULT doExecute(PARAM request, boolean retry) throws BusinessException;
 
 }

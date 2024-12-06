@@ -2,27 +2,26 @@ package com.rosenzest.rest.client.factory;
 
 import com.rosenzest.base.exception.BusinessException;
 import com.rosenzest.rest.client.IApiRequest;
-import com.rosenzest.rest.client.IApiResponse;
 
 /**
- * 抽象接口factory
+ * 抽象接口执行者
  * 
  * @author fronttang
  * @date 2021/08/25
  */
-public abstract class AbstractApiFactory<R extends IApiResponse> implements IApiFactory<R> {
+public abstract class AbstractApiExecutor<RESULT> implements IApiExecutor<RESULT> {
 
     /**
      * 接口入参
      */
     protected IApiRequest param;
 
-    protected AbstractApiFactory(IApiRequest param) {
+    protected AbstractApiExecutor(IApiRequest param) {
         this.param = param;
     }
 
     @Override
-    public R execute() throws BusinessException {
+    public RESULT execute() throws BusinessException {
         return getApi().execute(this.param);
     }
 }
