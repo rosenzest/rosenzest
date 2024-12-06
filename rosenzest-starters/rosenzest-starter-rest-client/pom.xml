@@ -10,16 +10,15 @@
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../rosenzest-parent</relativePath>
 	</parent>
-
-	<groupId>com.rosenzest</groupId>
-	<artifactId>rosenzest-rest-client</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
-
-	<name>rosenzest-rest-client</name>
-	<description>Rosenzest rest client</description>
-
-	<url>https://www.rosenzest.com</url>
+	
+    <groupId>com.rosenzest</groupId>
+    <artifactId>rosenzest-starter-rest-client</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    
+    <name>rosenzest-starter-rest-client</name>
+    <description>Starter for using Rosenzest rest client</description>
+    
+    <url>https://www.rosenzest.com</url>
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -44,35 +43,21 @@
 		<system>Github</system>
 		<url>https://github.com/rosenzest/rosenzest/issues</url>
 	</issueManagement>
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.rosenzest</groupId>
+            <artifactId>rosenzest-rest-client</artifactId>
+        </dependency>
 
-	<dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-		<dependency>
-			<groupId>com.rosenzest</groupId>
-			<artifactId>rosenzest-base</artifactId>
-		</dependency>
-
-		<!-- hutool -->
-		<dependency>
-			<groupId>cn.hutool</groupId>
-			<artifactId>hutool-all</artifactId>
-		</dependency>
-
-		<!-- fastjson2 -->
-		<dependency>
-			<groupId>com.alibaba.fastjson2</groupId>
-			<artifactId>fastjson2</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-	</dependencies>
-
-	<build>
+    <build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-source-plugin</artifactId>

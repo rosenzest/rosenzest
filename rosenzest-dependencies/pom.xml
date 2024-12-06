@@ -44,6 +44,7 @@
 		<rosenzest-base.version>1.0.0-SNAPSHOT</rosenzest-base.version>
 		<rosenzest-server-base.version>1.0.0-SNAPSHOT</rosenzest-server-base.version>
 		<rosenzest-model-base.version>1.0.0-SNAPSHOT</rosenzest-model-base.version>
+		<rosenzest-rest-client.version>1.0.0-SNAPSHOT</rosenzest-rest-client.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<spring-boot.version>2.7.6</spring-boot.version>
@@ -111,6 +112,11 @@
 				<groupId>com.rosenzest.model</groupId>
 				<artifactId>rosenzest-model-base</artifactId>
 				<version>${rosenzest-model-base.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.rosenzest</groupId>
+				<artifactId>rosenzest-rest-client</artifactId>
+				<version>${rosenzest-rest-client.version}</version>
 			</dependency>
 
 
